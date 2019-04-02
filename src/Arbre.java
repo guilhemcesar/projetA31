@@ -28,50 +28,51 @@ public class Arbre {
 
     void parcourPrefixe(){
 
-        System.out.println(getValeur());
-        if (getSousArbreGauche() != null)
-            getSousArbreGauche().parcourPrefixe();
-        if(getSousArbreDroit() != null)
-            getSousArbreDroit().parcourPrefixe();
+        System.out.println(getValeur());             //Affichage valeurs
+        if (getSousArbreGauche() != null)            //Controle branche existe
+            getSousArbreGauche().parcourPrefixe();   //Appel recursivité
+        if(getSousArbreDroit() != null)              //Controle branche existe
+            getSousArbreDroit().parcourPrefixe();    //Appel recursivité
     }
 
     void parcourInfixe(){
 
-        if (getSousArbreGauche() != null)
-            getSousArbreGauche().parcourInfixe();
-        System.out.println(getValeur());
-        if(getSousArbreDroit() != null)
-            getSousArbreDroit().parcourInfixe();
+        if (getSousArbreGauche() != null)             //Controle branche existe
+            getSousArbreGauche().parcourInfixe();     //Appel recursivité
+        System.out.println(getValeur());              //Affichage valeurs
+        if(getSousArbreDroit() != null)               //Controle branche existe
+            getSousArbreDroit().parcourInfixe();      //Appel recursivité
     }
 
     void parcourPostfixe(){
 
-        if (getSousArbreGauche() != null)
-            getSousArbreGauche().parcourPostfixe();
-        if(getSousArbreDroit() != null)
-            getSousArbreDroit().parcourPostfixe();
-        System.out.println(getValeur());
+        if (getSousArbreGauche() != null)               //Controle branche existe
+            getSousArbreGauche().parcourPostfixe();     //Appel recursivité
+        if(getSousArbreDroit() != null)                 //Controle branche existe
+            getSousArbreDroit().parcourPostfixe();      //Appel recursivité
+        System.out.println(getValeur());                //Affichage valeurs
     }
 
     boolean arbresEgaux(Arbre a, Arbre b) {
 
-        if ((a == null) && (b == null))
-            return true;
-        if ((a == null) && (b != null))
-            return false;
-        if ((a != null) && (b == null))
-            return false;
-        if (a.getValeur() != b.getValeur())
-            return false;
+        if ((a == null) && (b == null))                 //Controle branche existe
+            return true;                                // return true car les 2 branches existent
+        if ((a == null) && (b != null))                 //Controle branche existe
+            return false;                               // return false car different
+        if ((a != null) && (b == null))                 //Controle branche existe
+            return false;                               // return false car different
+        if (a.getValeur() != b.getValeur())             //Controle valeurs
+            return false;                               // return false car different
         return (arbresEgaux(a.getSousArbreGauche(), b.getSousArbreGauche()) && arbresEgaux(a.getSousArbreDroit(), b.getSousArbreDroit()));
-    }
+    }                                                   //Appel recursif pour traiter chacune des sous branches
 
     int hauteur(Arbre a) {
         if (a == null)
-            return 0;
+            return 0;                                   //Si l'arbre n'existe pas il a une hauteur de 0
         else
             return (1 + Math.max(hauteur(a.getSousArbreGauche()), hauteur(a.getSousArbreDroit())));
-    }
+    }                                                   //parcour par recursivité de toutes les sous branches, le chemin le
+                                                        //plus long est retenue grace à l'instruction max
 
     boolean estABR(Arbre a) {
         if (a == null)

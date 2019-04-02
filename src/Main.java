@@ -27,7 +27,11 @@ public class Main {
 
         System.out.println(a.hauteur(a));
 
+        System.out.println(a.estABR(a));
 
+        a.insertion(5);
+
+        System.out.println(a.recherche(5));
 
     }
 }
