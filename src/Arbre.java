@@ -74,6 +74,10 @@ public class Arbre {
     }                                                   //parcour par recursivité de toutes les sous branches, le chemin le
                                                         //plus long est retenue grace à l'instruction max
 
+    int hauteur() {
+        return (1 + Math.max(hauteur(getSousArbreGauche()), hauteur(getSousArbreDroit())));
+    }
+
     boolean estABR(Arbre a) {
         if (a == null)
             return true;
