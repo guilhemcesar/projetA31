@@ -27,7 +27,7 @@ public class Main {
 
         System.out.println(a.hauteur(a));
 
-        System.out.println(a.estABR(a));
+        System.out.println(a.estABR());
 
         a.insertion(5);
 
